@@ -89,7 +89,11 @@ class CookieFactory {
     }
 
     static cookieRecomendation(day, listCookie) {
+        let cookieRecomend = []
 
+        for(let i=0){
+
+        }
     }
 
 }

@@ -70,23 +70,33 @@ class CookieFactory{
     let arrIng=[]
     for (let i = 0; i < cookieSet.length; i++) {
       let tempIng=ingredientSet[i].toString().trim().split(',');
+      for (let j = 0; j < tempIng.length; j++) {
+        let splitIng=tempIng[j].toString().trim().split(':');
+        let objIng={
+          name: splitIng[1].toString().trim(),
+          amount: splitIng[0].toString().trim()
+        }
+        arrIng.push(new Ingredient(objIng))
+      }
+
       if(options[i]==='peanut butter'){
-        let peanutButter = new PeanutButter(cookieSet[i],tempIng)
+        let peanutButter = new PeanutButter(cookieSet[i],arrIng)
         peanutButter.bake()
         arrCookie.push(peanutButter)
       }
       else if(options[i]==='chocolate chip'){
-        arrCookie.push(new ChocolateChip(cookieSet[i],tempIng))
+        arrCookie.push(new ChocolateChip(cookieSet[i],arrIng))
       }
       else if(options[i]==='chocolate chip crumbled'){
-        arrCookie.push(new ChocolateChipCrumbled(cookieSet[i],tempIng))
+        arrCookie.push(new ChocolateChipCrumbled(cookieSet[i],arrIng))
       }
       else if(options[i]==='peanut butter crumbled'){
-        arrCookie.push(new PeanutButterCrumbled(cookieSet[i],tempIng))
+        arrCookie.push(new PeanutButterCrumbled(cookieSet[i],arrIng))
       }
       else{
-        arrCookie.push(new OtherCookie(cookieSet[i],tempIng))
+        arrCookie.push(new OtherCookie(cookieSet[i],arrIng))
       }
+      arrIng=[]
     }
     return arrCookie
   }
@@ -95,13 +105,12 @@ class CookieFactory{
     let arrFree=[]
     let countSugar=0
     for (let i = 0; i < listCookie.length; i++) {
-      let splitIng=listCookie[i].ingredients.toString().trim().split(':');
-      let splitAgain=splitIng.toString().trim().split(',');
-      for (let j = 0; j < splitAgain.length; j++) {
-        if(splitAgain[j]===' sugar'){
+      for (let j = 0; j < listCookie[i].ingredients.length; j++) {
+        if(listCookie[i].ingredients[j].name==='sugar'){
           countSugar++
         }
       }
+
       if(countSugar===0){
         arrFree.push(listCookie[i])
       }
@@ -113,7 +122,7 @@ class CookieFactory{
 }
 
 class Ingredient{
-  constructor(){
+  constructor(options){
     this.name=options['name']
     this.amount=options['amount']
   }

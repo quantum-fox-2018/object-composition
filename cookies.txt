@@ -1,0 +1,4 @@
+peanut butter,1 cup of flour,2 cups(gluten) of sugar,2 cups of peanut butter,1 cup of cinnamon,2 tsp of butter
+chocolate chip,1 cup of chips,1 cup of sugar,2 tsp of butter
+chocolate cheese,1 cup of flour,2 cups of sugar,2 cups of cinnamon,1 tblsp of butter
+chocolate butter,1 cup of gluten free flour,1 cup of flav or adders,2 tsp of butter

@@ -12,6 +12,17 @@ class Cookie {
   }
 
   inputIngredients(input){
+    let composition = new Ingredients(input)
+    return composition.ingredients
+  }
+}
+
+class Ingredients {
+  constructor(name) {
+    this.ingredients = this.inputIngredients(name)
+  }
+
+  inputIngredients(input){
     let arrayOfIngredients = []
     for(let i=0; i<options.length; i++){
       let cookie = options[i].split(',')
@@ -102,6 +113,7 @@ var options = fs.readFileSync('cookies.txt','utf8').split('\n')
 let batch_of_cookies = CookieFactory.create(options)
 let noSugarFree = CookieFactory.cookiesName(options)
 let sugarFreeFoods = CookieFactory.cookieRecommendation(batch_of_cookies,noSugarFree)
+console.log(batch_of_cookies)
 console.log(`sugar free cakes are: ${sugarFreeFoods}`)
 
 // let array = [1,2,3,4,5]

@@ -127,7 +127,7 @@ class CookieFactory{
 }
 
 let batch_of_cookies = CookieFactory.create(options);
-console.log(batch_of_cookies);
+console.log(batch_of_cookies[0].ingredients);
 
 let sugarFreeFoods = CookieFactory.cookieRecommendation("tuesday",batch_of_cookies);
 console.log(sugarFreeFoods);

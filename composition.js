@@ -42,6 +42,7 @@ class Cookie {
 
             listIngred.push(new Ingredient(objComp))
         }
+        // return listIngred[1].has_sugar
         return listIngred
     }
 
@@ -91,26 +92,34 @@ class CookieFactory {
     static cookieRecomendation(day, listCookie) {
         let cookieRecomend = []
 
-        for(let i=0){
-
+        for(let i=0; i<listCookie.length; i++){
+            let count =0
+            for(let j=0; j<listCookie[i].ingredients.length; j++){
+                if(listCookie[i].ingredients[j].has_sugar == false){
+                    count++
+                }
+            }
+            if(count === listCookie[i].ingredients.length){
+                cookieRecomend.push(listCookie[i])
+            }
         }
+        return cookieRecomend
     }
 
 }
 
 
-
-
-
 let batch_of_cookies = CookieFactory.create(options)
 console.log(batch_of_cookies);
+console.log('===============================================');
 
-// let sugarFreeFoods = CookieFactory.cookieRecomendation('tuesday', batch_of_cookies)
-// console.log('sugar free cakes are :');
-// for(let i=0; i<sugarFreeFoods.length; i++){
-//     console.log(sugarFreeFoods[i].name);
+let sugarFreeFoods = CookieFactory.cookieRecomendation('tuesday', batch_of_cookies)
+console.log('sugar free cakes are :');
+for(let i=0; i<sugarFreeFoods.length; i++){
+    console.log(i+1,sugarFreeFoods[i].name);
+    console.log('with ingredients is :',sugarFreeFoods[i].ingredients);
     
-// }
+}
 
 // let kue = new Cookie(options)
 // console.log(kue);

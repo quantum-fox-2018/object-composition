@@ -17,7 +17,7 @@ for(let i=0;i<optionsArray.length-1;i++){
 
 var objectIngredients = {}
 var objectBahan = [];
-for(let i=0;i<optionsArray.length-1;i++){
+for(let i=0;i<optionsArray.length;i++){
   for(let j=0;j<optionsArray[i].length;j++){
     if(optionsArray[i][j] == "="){
       objectBahan.push(optionsArray[i].slice(j+2));
@@ -127,7 +127,7 @@ class CookieFactory{
 }
 
 let batch_of_cookies = CookieFactory.create(options);
-console.log(batch_of_cookies[0].ingredients);
+console.log(batch_of_cookies);
 
 let sugarFreeFoods = CookieFactory.cookieRecommendation("tuesday",batch_of_cookies);
 console.log(sugarFreeFoods);
